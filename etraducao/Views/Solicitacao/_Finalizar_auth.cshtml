@@ -6,45 +6,19 @@
     <div class="mdl-card__supporting-text" style="width:100%; padding-left:6%;">
         <div class="container">
             <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">Criar Conta</h4>
+                <h4 class="card-title mt-3 text-center">Crie sua Conta</h4>
                 <p class="text-center">Faça seu cadastro antes de Prosseguir</p>
-                <p>
-                    <a href="" onclick="NaoImplementado()" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                    <a href="" onclick="NaoImplementado()" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
-                </p>
+                <div class="form-group">
+                    <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@ViewBag.ReturnUrl" class="btn btn-primary btn-block" onclick="NaoImplementado()"> Criar Conta  </a>
+                </div> <!-- form-group// -->
                 <p class="divider-text">
                     <span class="bg-light">OU</span>
                 </p>
-                <form>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input name="" class="form-control" placeholder="Nome" type="text">
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="" class="form-control" placeholder="Email" type="email">
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input class="form-control" placeholder="Senha" type="password">
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input class="form-control" placeholder="Repita a Senha" type="password">
-                    </div> <!-- form-group// -->
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary btn-block" onclick="NaoImplementado()"> Criar Conta  </button>
-                    </div> <!-- form-group// -->
-                    <p class="text-center">Já possui uma conta? <a href="" onclick="NaoImplementado()">Log In</a> </p>
-                </form>
+                <p class="text-center">Já possui uma conta?</p>
+                <p class="text-center">Então realize o login</p>
+                <p>
+                    <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@ViewBag.ReturnUrl" class="btn btn-primary btn-block"> Realizar Login </a>
+                </p>
             </article>
         </div>
     </div>

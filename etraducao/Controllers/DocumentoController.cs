@@ -33,7 +33,7 @@ namespace etraducao.Controllers
             int quantidadeDeCaracteres = 0;
             var documentos = new List<Documento>();
             var listaDeDocumentosParaView = new List<DocumentoContadoViewModel>();
-            var solicitacao = await solicitacaoRepositorio.BuscarSolicitacao(3);
+            var solicitacao = await solicitacaoRepositorio.BuscarSolicitacao(1);
             try
             {
                 foreach (IFormFile source in arquivos)

@@ -80,6 +80,7 @@ namespace etraducao.Controllers
         {
             var solicitacao = await solicitacaoRepositorio.BuscarSolicitacao(id);
             var modelo = new ListarPrecoDaSolicitacaoViewModel(solicitacao);
+            ViewBag.ReturnUrl = $"/Solicitacao/Finalizar/{id}";
             return View(modelo);
         }
 
@@ -90,6 +91,11 @@ namespace etraducao.Controllers
             if (solicitacaoId > 0)
             {
                 var solicitacao = await solicitacaoRepositorio.BuscarSolicitacao(solicitacaoId);
+                if(!string.IsNullOrEmpty(solicitacao.Pagamento?.InvoiceUrl))
+                {
+                    return RedirectPermanent(solicitacao.Pagamento.InvoiceUrl);
+                }
+
                 await cobrancaRepositorio.CriarCobranca(solicitacao, pagamento);
                 await solicitacaoRepositorio.Atualizar(solicitacao);
                 return RedirectPermanent(solicitacao.Pagamento.InvoiceUrl);

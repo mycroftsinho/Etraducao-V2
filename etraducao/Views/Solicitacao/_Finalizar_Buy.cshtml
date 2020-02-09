@@ -39,7 +39,7 @@
                         <form asp-action="Finalizar" asp-controller="Solicitacao" method="post">
                             <input type="hidden" asp-for="SolicitacaoId" />
                             <input type="hidden" name="pagamento" value="BOLETO" />
-                            <button class="btn btn-primary btn-lg btn-block text-center" type="submit">
+                            <button class="btn btn-primary btn-lg btn-block text-center" type="submit" formtarget="_blank">
                                 Boleto
                                 <br />
                                 <span class="mdl-list__item-primary-content" style="width:100%;">
@@ -52,7 +52,7 @@
                         <form asp-action="Finalizar" asp-controller="Solicitacao" method="post">
                             <input type="hidden" asp-for="SolicitacaoId" />
                             <input type="hidden" name="pagamento" value="CREDIT_CARD" />
-                            <button class="btn btn-primary btn-lg btn-block text-center" type="submit">
+                            <button class="btn btn-primary btn-lg btn-block text-center" type="submit" formtarget="_blank">
                                 Cartão
                                 <br />
                                 <span class="mdl-list__item-primary-content" style="width:100%;">
