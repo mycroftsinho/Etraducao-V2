@@ -1,0 +1,68 @@
+﻿@using etraducao.Models.Entidades;
+@model etraducao.Models.ViewModel.ListarPrecoDaSolicitacaoViewModel
+
+<div class="mdl-cell mdl-cell--7-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-card mdl-shadow--3dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Formas de Pagamento</h2>
+    </div>
+    <hr />
+    <div class="mdl-card__supporting-text" style="width:100%; padding-left:6%;">
+        <div class="container-fluid">
+            <div class="row col align-self-center ml-md-5 ml-sm-3">
+                <div class="col-md-10">
+                    <ul class="demo-list-two mdl-list">
+                        <li class="mdl-list__item mdl-list__item--two-line">
+                            <p class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-icon">done_all</i>
+                                <span>Selecione a forma de pagamento <br /> para ser <b>redirecionado à gestão de cobranças.</b></span><br />
+                            </p>
+                        </li>
+
+                        <li class="mdl-list__item mdl-list__item--two-line">
+                            <p class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-icon">attach_money</i>
+                                <span><b>Realize o pagamento</b> e aguarde o contato da central.</span><br />
+                            </p>
+                        </li>
+
+                        <li class="mdl-list__item mdl-list__item--two-line">
+                            <p class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-icon">insert_emoticon</i>
+                                <span>Assim que o seu pagamento for confirmado <br /> <b>seu documento será enviado</b> ao nosso tradutor.</span><br />
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row col align-self-center">
+                    <div class="mdl-cell mdl-cell--1-col"></div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+                        <form asp-action="Finalizar" asp-controller="Solicitacao" method="post">
+                            <input type="hidden" asp-for="SolicitacaoId" />
+                            <input type="hidden" name="pagamento" value="BOLETO" />
+                            <button class="btn btn-primary btn-lg btn-block text-center" type="submit">
+                                Boleto
+                                <br />
+                                <span class="mdl-list__item-primary-content" style="width:100%;">
+                                    <i class="fas fa-barcode fa-4x"></i>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+                        <form asp-action="Finalizar" asp-controller="Solicitacao" method="post">
+                            <input type="hidden" asp-for="SolicitacaoId" />
+                            <input type="hidden" name="pagamento" value="CREDIT_CARD" />
+                            <button class="btn btn-primary btn-lg btn-block text-center" type="submit">
+                                Cartão
+                                <br />
+                                <span class="mdl-list__item-primary-content" style="width:100%;">
+                                    <i class="far fa-credit-card fa-4x"></i>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

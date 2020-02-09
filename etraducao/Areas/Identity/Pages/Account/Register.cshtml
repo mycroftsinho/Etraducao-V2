@@ -1,0 +1,56 @@
+﻿@page
+@model RegisterModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="row h-100">
+    <div class="col-12 col-md-10 mx-auto my-auto">
+        <div class="card auth-card">
+            <div class="position-relative image-side ">
+                <p class=" text-white h2">MAGIC IS IN THE DETAILS</p>
+                <p class="white mb-0">
+                    Por favor, realize seu registro aqui.
+                    <br>Se você já tem uma conta, por favor
+                    <b><a href="#" class="white">faça LOGIN aqui</a></b>.
+                </p>
+            </div>
+            <div class="form-side">
+                <a href="Dashboard.Default.html">
+                    <span class="logo-single"></span>
+                </a>
+                <h6 class="mb-4">Registrar</h6>
+
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <label asp-for="Input.Nome" class="form-group has-float-label mb-4">
+                        <input asp-for="Input.Nome" class="form-control"/>
+                        <span>Nome</span>
+                    </label>
+                    <label asp-for="Input.Codigo" class="form-group has-float-label mb-4">
+                        <input asp-for="Input.Codigo" class="form-control" />
+                        <span>Cpf/Cnpj</span>
+                    </label>
+                    <label class="form-group has-float-label mb-4">
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span>E-mail</span>
+                    </label>
+                    <label class="form-group has-float-label mb-4">
+                        <input asp-for="Input.Password" class="form-control" type="password" placeholder="" />
+                        <span>Senha</span>
+                    </label>
+                    <label class="form-group has-float-label mb-4">
+                        <input asp-for="Input.ConfirmPassword" class="form-control" type="password" placeholder="" />
+                        <span>Confirmar Senha</span>
+                    </label>
+                    <div class="d-flex justify-content-end align-items-center">
+                        <button class="btn btn-primary btn-lg btn-shadow" type="submit">REGISTER</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

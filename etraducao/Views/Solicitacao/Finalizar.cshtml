@@ -1,0 +1,356 @@
+﻿@using etraducao.Models.Entidades;
+@model etraducao.Models.ViewModel.ListarPrecoDaSolicitacaoViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutFormulario.cshtml";
+    ViewData["Title"] = "Finalizar";
+    var quantidadeDeDocsParaApostilar = Model.QuantidadeDeDocumentosParaApostilar > 1 ? $"{Model.QuantidadeDeDocumentosParaApostilar} Docs" : $"{Model.QuantidadeDeDocumentosParaApostilar} Doc";
+    var quantidadeDeDocsParaReconhecerFirma = Model.QuantidadeDeDocumentosParaReconhecerFirma > 1 ? $"{Model.QuantidadeDeDocumentosParaReconhecerFirma} Docs" : $"{Model.QuantidadeDeDocumentosParaReconhecerFirma} Doc";
+}
+
+<style>
+    .priceDetails {
+        height: -webkit-fill-available !important;
+        display: flex !important;
+    }
+
+    .divider-text {
+        position: relative;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+        .divider-text span {
+            padding: 7px;
+            font-size: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .divider-text:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+            top: 55%;
+            left: 0;
+            z-index: 1;
+        }
+
+    .btn-facebook {
+        background-color: #405D9D;
+        color: #fff;
+    }
+
+    .btn-twitter {
+        background-color: #42AEEC;
+        color: #fff;
+    }
+</style>
+
+<div class="android-screen-section mdl-typography--text-center" style="width:100% !important;margin-bottom: -40px;">
+    <div class="mdl-typography--display-2 mdl-typography--font-thin">Traduções Profissionais Facilitadas</div>
+    <div class="mdl-card__supporting-text">
+        <span class="mdl-typography--font-light mdl-typography--subhead">
+            Várias pessoas ao redor do mundo escolheram fazer suas traduções com tradutores profissionais, seja mais um cliente satisfeito. Junte-se a nós.
+        </span>
+    </div>
+</div>
+
+<div class="mdl-grid portfolio-max-width portfolio-contact">
+    <div class="mdl-cell mdl-cell--5-col mdl-cell--12-col-phone mdl-cell--12-col-tablet mdl-card mdl-shadow--3dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Detalhes do Pedido</h2>
+        </div>
+        <hr />
+        <div class="mdl-card__supporting-text" style="width:100%;">
+            <ul class="demo-list-two mdl-list" style="padding-left: 0%;">
+                <li class="mdl-list__item mdl-list__item--two-line priceDetails border">
+                    <span class="mdl-list__item-primary-content">
+                        <span>@Model.Cliente</span><br />
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-info">Cliente</span><br />
+                    </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line priceDetails border">
+                    <span class="mdl-list__item-primary-content">
+                        <span>Tradução de <b>@Model.OrigemTraducao</b> para: <b>@Model.DestinoTraducao</b></span>
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-info">1 linguagem</span>
+                    </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line priceDetails border">
+                    <span class="mdl-list__item-primary-content">
+                        <span>@Model.TipoDeSolicitacao.DisplayName()</span>
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-info">Solução</span>
+                    </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line priceDetails border">
+                    <span class="mdl-list__item-primary-content">
+                        <span>@Model.QuantidadeDeCaracteres.ToString("F")  caracteres / @Model.QuantidadeDeLaudas.ToString("F") laudas</span>
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-info">Quantidade de palavras</span>
+                    </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line priceDetails border">
+                    <span class="mdl-list__item-primary-content">
+                        <span>@Model.DataDeEntrega</span>
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-info">Entrega</span>
+                    </span>
+                </li>
+                <li class="mdl-list__item mdl-list__item--two-line priceDetails border">
+                    <span class="mdl-list__item-primary-content">
+                        <span>@Model.ValorPorLauda.ToString("C")</span>
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-info">valor por lauda</span>
+                    </span>
+                </li>
+                @if (Model.TipoDeSolicitacao.Equals(TiposDeSolicitacao.TraducaoJuramentada))
+                {
+
+                    <li class="mdl-list__item mdl-list__item--two-line priceDetails border">
+                        <span class="mdl-list__item-primary-content">
+                            <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="aumentarReconhecimento">
+                                <i class="material-icons">keyboard_arrow_up</i>
+                            </button>
+                            <span>
+                                @quantidadeDeDocsParaReconhecerFirma
+                            </span>
+                            <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="diminuirReconhecimento">
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </button>
+                            |
+                            <span class="ml-2">@Model.ValorReconhecimentoDeFirma.ToString("C")</span>
+                        </span>
+                        <span class="mdl-list__item-secondary-content">
+                            <span class="mdl-list__item-secondary-info">Reconhecimento de Firma</span>
+                        </span>
+                    </li>
+                    <li class="mdl-list__item mdl-list__item--two-line priceDetails border">
+                        <span class="mdl-list__item-primary-content">
+                            <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="aumentarHaia">
+                                <i class="material-icons">keyboard_arrow_up</i>
+                            </button>
+                            <span>
+                                @quantidadeDeDocsParaApostilar
+                            </span>
+                            <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="diminuirHaia">
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </button>
+                            |
+                            <span class="ml-2">@Model.ValorApostilaDeHaia.ToString("C")</span>
+                        </span>
+                        <span class="mdl-list__item-secondary-content">
+                            <span class="mdl-list__item-secondary-info">Apostila de HAIA</span>
+                        </span>
+                    </li>
+                }
+                <li class="mdl-list__item mdl-list__item--two-line priceDetails border" id="details">
+                    <span class="mdl-list__item-primary-content">
+                        <span>@Model.ValorTotal.ToString("C")</span>
+                    </span>
+                    <span class="mdl-list__item-secondary-content">
+                        <span class="mdl-list__item-secondary-info">Valor do Pedido</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        @await Html.PartialAsync("_Finalizar_Buy")
+    }
+    else
+    {
+        @await Html.PartialAsync("_Finalizar_Auth")
+    }
+</div>
+
+<form asp-action="AlterarQuantidadeDeDocumentosParaApostilar" method="post" id="formApostilamento">
+    <input type="hidden" name="quantidadeDeDocumentos" id="quantidadeDeDocumentos" />
+    <input type="hidden" name="solicitacaoId" id="solicitacaoId" />
+</form>
+
+<form asp-action="AlterarQuantidadeDeDocumentosParaReconhecimentoDeFirma" method="post" id="formReconhecimentoDeFirma">
+    <input type="hidden" name="documentos" id="documentos" />
+    <input type="hidden" name="id" id="id" />
+</form>
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#details").focus();
+        });
+
+        $("#aumentarHaia").click(function (e) {
+            e.preventDefault();
+            AumentarDocumentoHaia();
+        });
+
+        $("#diminuirHaia").click(function (e) {
+            e.preventDefault();
+
+            if ('@Model.QuantidadeDeDocumentosParaApostilar' == '0') {
+                Swal.fire('Não há como diminuir de zero!');
+            } else {
+                DiminuirDocumentoHaia();
+            }
+        });
+
+        $("#aumentarReconhecimento").click(function (e) {
+            e.preventDefault();
+            AumentarReconhecimentoDeFirma();
+        });
+
+        $("#diminuirReconhecimento").click(function (e) {
+            e.preventDefault();
+
+            if ('@Model.QuantidadeDeDocumentosParaReconhecerFirma' == '0') {
+                Swal.fire('Não há como diminuir de zero!');
+            } else {
+                DiminuirReconhecimentoDeFirma();
+            }
+        });
+
+        function AumentarDocumentoHaia() {
+            let timerInterval
+            Swal.fire({
+                title: 'Atualizando total da solicitação..',
+                html: 'Acrescentando Taxa de Documento..  A página será atualizada em segundos.',
+                timer: 1000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getContent()
+                        if (content) {
+                            const b = content.querySelector('b')
+                            if (b) {
+                                b.textContent = Swal.getTimerLeft()
+                            }
+                        }
+                        var quantidadeDeDocumentos = 1 + @Model.QuantidadeDeDocumentosParaApostilar;
+                        var solicitacaoId = '@Model.SolicitacaoId';
+
+                        $("#quantidadeDeDocumentos").val(quantidadeDeDocumentos);
+                        $("#solicitacaoId").val(solicitacaoId);
+                        $("#formApostilamento").submit();
+                    }, 100)
+                },
+                onClose: () => {
+                    clearInterval(timerInterval)
+                }
+            });
+        }
+
+        function DiminuirDocumentoHaia() {
+            let timerInterval
+            Swal.fire({
+                title: 'Atualizando total da solicitação..',
+                html: 'Diminuindo Taxa de Documento..  A página será atualizada em segundos.',
+                timer: 1000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getContent()
+                        if (content) {
+                            const b = content.querySelector('b')
+                            if (b) {
+                                b.textContent = Swal.getTimerLeft()
+                            }
+                        }
+                        var quantidadeDeDocumentos = -1 + @Model.QuantidadeDeDocumentosParaApostilar;
+                        var solicitacaoId = '@Model.SolicitacaoId';
+
+                        $("#quantidadeDeDocumentos").val(quantidadeDeDocumentos);
+                        $("#solicitacaoId").val(solicitacaoId);
+                        $("#formApostilamento").submit();
+                    }, 100)
+                },
+                onClose: () => {
+                    clearInterval(timerInterval)
+                }
+            });
+        }
+
+        function AumentarReconhecimentoDeFirma() {
+            let timerInterval
+            Swal.fire({
+                title: 'Atualizando total da solicitação..',
+                html: 'Acrescentando Taxa de Documento..  A página será atualizada em segundos.',
+                timer: 1000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getContent()
+                        if (content) {
+                            const b = content.querySelector('b')
+                            if (b) {
+                                b.textContent = Swal.getTimerLeft()
+                            }
+                        }
+                        var quantidadeDeDocumentos = 1 + @Model.QuantidadeDeDocumentosParaReconhecerFirma;
+                        var solicitacaoId = '@Model.SolicitacaoId';
+
+                        $("#documentos").val(quantidadeDeDocumentos);
+                        $("#id").val(solicitacaoId);
+                        $("#formReconhecimentoDeFirma").submit();
+                    }, 100)
+                },
+                onClose: () => {
+                    clearInterval(timerInterval)
+                }
+            });
+        }
+
+        function DiminuirReconhecimentoDeFirma() {
+            let timerInterval
+            Swal.fire({
+                title: 'Atualizando total da solicitação..',
+                html: 'Diminuindo Taxa de Documento..  A página será atualizada em segundos.',
+                timer: 1000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getContent()
+                        if (content) {
+                            const b = content.querySelector('b')
+                            if (b) {
+                                b.textContent = Swal.getTimerLeft()
+                            }
+                        }
+                        var quantidadeDeDocumentos = -1 + @Model.QuantidadeDeDocumentosParaReconhecerFirma;
+                        var solicitacaoId = '@Model.SolicitacaoId';
+
+                        $("#documentos").val(quantidadeDeDocumentos);
+                        $("#id").val(solicitacaoId);
+                        $("#formReconhecimentoDeFirma").submit();
+                    }, 100)
+                },
+                onClose: () => {
+                    clearInterval(timerInterval)
+                }
+            });
+        }
+
+        function NaoImplementado() {
+            Swal.fire('Desculpe, funcionalidade não implementada!');
+        }
+    </script>
+}

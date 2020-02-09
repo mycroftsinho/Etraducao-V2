@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="android-header mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header-row">
+        <a asp-action="Realizar" asp-controller="Solicitacao">
+            <span class="android-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/android-logo.png">
+            </span>
+        </a>
+        <!-- Add spacer, to align navigation to the right in desktop -->
+        <div class="android-header-spacer mdl-layout-spacer"></div>
+
+        <!-- Navigation -->
+        <div class="android-navigation-container">
+            <nav class="android-navigation mdl-navigation">
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </nav>
+        </div>
+
+        <a asp-action="Index" asp-controller="Home">
+            <span class="android-mobile-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/android-logo.png">
+            </span>
+        </a>
+    </div>
+</div>

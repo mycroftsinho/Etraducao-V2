@@ -1,0 +1,28 @@
+﻿@model IEnumerable<etraducao.Models.ViewModel.DocumentoContadoViewModel>
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    <input type="hidden" value="@Model.Select(x => x.DocumentoId).ToArray()" id="documentosIds" />
+    <input type="hidden" value="@Model.Sum(x => x.QuantidadeDeCaracteres)" id="somaDeCaracteres" />
+
+    foreach (var item in Model)
+    {
+        <input type="hidden" value="@item.DocumentoId" name="documentoIds" />
+
+        <div class="t-root-0-2-15" data-upload="true" id="@item.DocumentoId">
+            <div class="t-main-0-2-16">
+                <div class="icon t-icon-0-2-19">
+                    <i class="material-icons">attach_file</i>
+                </div>
+                <p class="t-name-0-2-17">@item.NomeDoArquivo</p>
+                <small class="t-size-0-2-18">(@item.QuantidadeDeCaracteres caracteres)</small>
+                <div class="icon t-icon-0-2-19" onclick="RemoverDocumento('@item.DocumentoId', '@item.QuantidadeDeCaracteres')">
+                    <i class="material-icons">restore_from_trash</i>
+                </div>
+            </div>
+        </div>
+    }
+}

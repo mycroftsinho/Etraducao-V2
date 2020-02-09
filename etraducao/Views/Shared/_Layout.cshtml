@@ -1,0 +1,60 @@
+﻿<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tradução Juramentada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" href="~/dashboard/font/iconsmind-s/css/iconsminds.css" />
+    <link rel="stylesheet" href="~/dashboard/font/simple-line-icons/css/simple-line-icons.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/dashboard/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/bootstrap.rtl.only.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/bootstrap-float-label.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/select2.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/select2-bootstrap.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/component-custom-switch.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/perfect-scrollbar.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/dashboard/css/main.css" />
+
+    <!-- Custom CSS Page Style -->
+    @RenderSection("Style", required: false)
+</head>
+
+<body id="app-container" class="menu-default show-spinner">
+
+    @await Html.PartialAsync("_Header")
+
+    @await Html.PartialAsync("_Menu")
+
+    <main>
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </main>
+
+    @await Html.PartialAsync("_Footer")
+
+    <!-- Custom HTML -->
+    @RenderSection("Html", required: false)
+
+    <script src="~/dashboard/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="~/dashboard/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/dashboard/js/vendor/perfect-scrollbar.min.js"></script>
+    <script src="~/dashboard/js/vendor/select2.full.js"></script>
+    <script src="~/dashboard/js/vendor/bootstrap-datepicker.js"></script>
+    <script src="~/dashboard/js/vendor/bootstrap-tagsinput.min.js"></script>
+    <script src="~/dashboard/js/dore.script.js"></script>
+    <script src="~/dashboard/js/scripts.js"></script>
+
+    <!-- Custom Javascript -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
