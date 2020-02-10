@@ -1,12 +1,12 @@
-﻿
+﻿@model etraducao.Models.Entidades.Solicitacao
 @{
     ViewData["Title"] = "DetalharSolicitacao";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section Style{
-    <link rel="stylesheet" href="~/dashboard/css/vendor/dataTables.bootstrap4.min.css" />
-    <link rel="stylesheet" href="~/dashboard/css/vendor/datatables.responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/fullcalendar.min.css" />
+    <link rel="stylesheet" href="~/dashboard/css/vendor/bootstrap-datepicker3.min.css" />
 }
 
 <div class="row">
@@ -14,129 +14,124 @@
         <h1>Detalhe da Solicitação</h1>
         <div class="separator mb-5"></div>
 
-        <div class="col-lg-12 col-xl-6">
-        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-6 mb-4">
+                <div class="card dashboard-link-list">
+                    <div class="card-body">
+                        <h5 class="card-title">Solicitacao</h5>
+                        <div class="d-flex flex-row">
+                            <div class="w-50">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-1">
+                                        Cliente
+                                    </li>
+                                    <li class="mb-1">
+                                        Idiomas
+                                    </li>
+                                    <li class="mb-1">
+                                        Solução
+                                    </li>
+                                    <li class="mb-1">
+                                        Quantidade De Laudas
+                                    </li>
+                                    <li class="mb-1">
+                                        Data De Entrega
+                                    </li>
+                                    <li class="mb-1">
+                                        Valor Por Lauda
+                                    </li>
+                                    <li class="mb-1">
+                                        Reconhecimento De Firma
+                                    </li>
+                                    <li class="mb-1">
+                                        Apostila De HAIA
+                                    </li>
+                                    <li class="mb-1">
+                                        Valor Do Pedido
+                                    </li>
+                                </ul>
+                            </div>
 
-        <div class="col-xl-6 col-lg-12 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Top Viewed Posts</h5>
-                    <table class="data-table data-table-standard responsive nowrap"
-                           data-order="[[ 1, &quot;desc&quot; ]]">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Views</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Wedding Cake with Flowers Macarons</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">1452</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Cheesecake with Chocolate Cookies</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">1420</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Homemade Cheesecake with Fresh Berries</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">1360</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Cheesecake with Fresh Berries</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">1310</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Tea Loaf with Fresh Oranges</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">1245</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Cheesecake with Chocolate Cookies</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">1100</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Homemade Cheesecake with Fresh Berries</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">1003</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Homemade Cheesecake with Fresh Berries</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">952</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Cheesecake with Fresh Berries</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">924</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Tea Loaf with Fresh Oranges</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">842</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Cheesecake with Chocolate Cookies</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">810</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p class="list-item-heading">Homemade Cheesecake with Fresh Berries</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted">605</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <div class="w-50">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-1">
+                                        @Model.Cliente.Nome
+                                    </li>
+                                    <li class="mb-1">
+                                        @Model.IdiomaOrigem -> @Model.IdiomaDestino
+                                    </li>
+                                    <li class="mb-1">
+                                        @Model.TipoDeSolicitacao
+                                    </li>
+                                    <li class="mb-1">
+                                        @Model.QuantidadeDeLaudas
+                                    </li>
+                                    <li class="mb-1">
+                                        @Model.DataDaEntrega.ToShortDateString()
+                                    </li>
+                                    <li class="mb-1">
+                                        @Model.ValorPorLauda
+                                    </li>
+                                    <li class="mb-1">
+                                        @Model.QuantidadeDeDocumentosParaReconhecerFirma
+                                    </li>
+                                    <li class="mb-1">
+                                        @Model.QuantidadeDeDocumentosParaApostilar
+                                    </li>
+                                    <li class="mb-1">
+                                        @Model.ValorTotal
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-xl-6 col-lg-4">
+                        <div class="card mb-4 progress-banner">
+                            <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                <div>
+                                    <i class="iconsminds-file mr-2 text-white align-text-bottom d-inline-block"></i>
+                                    <div>
+                                        <p class="lead text-white">@Model.Documentos.Count() Arquivos</p>
+                                        <p class="text-small text-white">Realizar Download</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-4">
+                        <div class="card mb-4 progress-banner">
+                            <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                <div>
+                                    <i class="iconsminds-male mr-2 text-white align-text-bottom d-inline-block"></i>
+                                    <div>
+                                        <p class="lead text-white">Enviar Solicição</p>
+                                        <p class="text-small text-white">Para O Tradutor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-
-
+            <div class="col-xl-6 col-lg-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Previsão de Entrega</h5>
+                        <div class="calendar"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 @section Scripts{
-    <script src="~/dashboard/js/vendor/datatables.min.js"></script>
+    <script src="~/dashboard/js/vendor/moment.min.js"></script>
+    <script src="~/dashboard/js/vendor/fullcalendar.min.js"></script>
+    <script src="~/dashboard/js/vendor/bootstrap-datepicker.js"></script>
 }

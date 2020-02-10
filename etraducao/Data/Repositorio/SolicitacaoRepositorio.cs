@@ -40,7 +40,7 @@ namespace etraducao.Data.Repositorio
 
         public async Task<Solicitacao> DetalharSolicitacao(int id)
         {
-            return await contexto.Solicitacao.FindAsync(id);
+            return await contexto.Solicitacao.Include(x => x.Cliente).Include(x => x.Documentos).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<IEnumerable<Solicitacao>> ListarSolicitacoesPaginadas(int page, string search, string status)
