@@ -23,6 +23,16 @@ namespace etraducao.Controllers
             return View(solicitacoes);
         }
 
+        public async Task<IActionResult> DetalharSolicitacao(int id)
+        {
+            var solicitacao = await solicitacaoRepositorio.DetalharSolicitacao(id);
+            if (solicitacao != null)
+            {
+                return View(solicitacao);
+            }
+            return RedirectToAction("Home", "Error");
+        }
+
         private async Task CarregarViewBagsDePaginacao(int page = 1, string search = "", string status = "")
         {
             int quantidade = await solicitacaoRepositorio.QuantidadeDeItensDaBusca(page, search, status);

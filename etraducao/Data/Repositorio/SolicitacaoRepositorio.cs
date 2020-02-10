@@ -38,6 +38,11 @@ namespace etraducao.Data.Repositorio
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<Solicitacao> DetalharSolicitacao(int id)
+        {
+            return await contexto.Solicitacao.FindAsync(id);
+        }
+
         public async Task<IEnumerable<Solicitacao>> ListarSolicitacoesPaginadas(int page, string search, string status)
         {
             int quantidadeDeItens = 10;

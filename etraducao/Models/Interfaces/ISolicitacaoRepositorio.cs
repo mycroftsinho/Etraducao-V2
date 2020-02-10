@@ -12,6 +12,8 @@ namespace etraducao.Models.Interfaces
         
         Task<Solicitacao> BuscarSolicitacao(int id);
 
+        Task<Solicitacao> DetalharSolicitacao(int id);
+
         Task<int> QuantidadeDeItensDaBusca(int page, string search, string status);
 
         Task<IEnumerable<Solicitacao>> ListarSolicitacoesPaginadas(int page, string search, string status);
