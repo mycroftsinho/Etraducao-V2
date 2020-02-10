@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using etraducao.Data;
 
 namespace etraducao.Migrations
 {
     [DbContext(typeof(EtraducaoContexto))]
-    partial class EtraducaoContextoModelSnapshot : ModelSnapshot
+    [Migration("20200210235102_Tradutor")]
+    partial class Tradutor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
