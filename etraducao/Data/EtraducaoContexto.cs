@@ -25,6 +25,8 @@ namespace etraducao.Data
 
         public DbSet<Solicitacao> Solicitacao { get; set; }
 
+        public DbSet<Tradutor> Tradutor { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -53,6 +55,10 @@ namespace etraducao.Data
             modelBuilder.Entity<Pagamento>().HasOne(x => x.Solicitacao)
                 .WithOne(x => x.Pagamento)
                 .HasForeignKey<Pagamento>(x => x.SolicitacaoId);
+
+            modelBuilder.Entity <Solicitacao>().HasOne(x => x.Tradutor)
+                .WithMany(x => x.Solicitacoes)
+                .HasForeignKey(x => x.TradutorId);
 
             modelBuilder.Entity<Solicitacao>()
                 .Property(e => e.TipoDeSolicitacao)

@@ -33,6 +33,8 @@ namespace etraducao.Models.Entidades
 
         public Guid PagamentoId { get; private set; }
 
+        public Guid? TradutorId { get; private set; }
+
         public string IdiomaDestino { get; private set; }
 
         public string IdiomaOrigem { get; private set; }
@@ -62,6 +64,8 @@ namespace etraducao.Models.Entidades
         public Cliente Cliente { get; private set; }
 
         public Pagamento Pagamento { get; private set; }
+
+        public Tradutor Tradutor { get; private set; }
 
         public ICollection<Documento> Documentos { get; private set; }
 
