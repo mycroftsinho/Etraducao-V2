@@ -1,0 +1,78 @@
+﻿@using etraducao.Models.Entidades;
+@model IEnumerable<etraducao.Models.Entidades.Solicitacao>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalDeItens = ViewBag.TotalDeItens;
+    int quantidadeDePaginas = ViewBag.TotalDePaginas;
+    int pagina = ViewBag.Page;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="mb-3">
+            <h1>Pedidos de Tradução</h1>
+            <div class="text-zero top-right-button-container">
+                <button type="button" class="btn btn-primary btn-lg top-right-button mr-1">Buscar</button>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <div class="collapse d-md-block" id="displayOptions">
+                <div class="d-block d-md-inline-block">
+                    <div class="btn-group float-md-left mr-1 mb-1">
+                        <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filtrar por
+                        </button>
+                        <div class="dropdown-menu">
+                            @foreach (var item in Html.GetEnumSelectList<StatusDePagamento>())
+                            {
+                                <a class="dropdown-item" href="#">@item.Text</a>
+                            }
+                        </div>
+                    </div>
+                    <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
+                        <input placeholder="Procurar...">
+                    </div>
+                </div>
+                <div class="float-md-right">
+                    <span class="text-muted text-small">mostrando 1-10 de @totalDeItens items </span>
+                </div>
+            </div>
+        </div>
+        <div class="separator mb-5"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 list" data-check-all="checkAll">
+
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <div class="card d-flex flex-row mb-3">
+                    <a class="d-flex" href="Pages.Product.Detail.html">
+                        <img src="~/dashboard/img/document.png" alt="Documento" class="list-thumbnail responsive border-0 card-img-left" />
+                    </a>
+                    <div class="pl-2 d-flex flex-grow-1 min-width-zero">
+                        <div class="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
+                            <a href="Pages.Product.Detail.html" class="w-40 w-sm-100">
+                                <p class="list-item-heading mb-0 truncate">@item.Cliente.Nome</p>
+                            </a>
+                            <p class="mb-0 text-muted text-small w-15 w-sm-100">@item.TipoDeSolicitacao</p>
+                            <p class="mb-0 text-muted text-small w-15 w-sm-100">@item.DataDaSolicitacao.ToShortDateString()</p>
+                            <div class="w-15 w-sm-100">
+                                <span class="badge badge-pill badge-primary">@item.Pagamento.StatusDePagamento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        @await Component.InvokeAsync("Paginacao", new { quantidadeDePaginas, totalDeItens, pagina })
+
+    </div>
+</div>
+

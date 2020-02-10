@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using etraducao.Models.Entidades;
+using System.Collections.Generic;
 
 namespace etraducao.Models.Interfaces
 {
@@ -10,5 +11,9 @@ namespace etraducao.Models.Interfaces
         Task Atualizar(Solicitacao solicitacao);
         
         Task<Solicitacao> BuscarSolicitacao(int id);
+
+        Task<int> QuantidadeDeItensDaBusca(int page, string search, string status);
+
+        Task<IEnumerable<Solicitacao>> ListarSolicitacoesPaginadas(int page, string search, string status);
     }
 }

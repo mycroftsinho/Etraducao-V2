@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using etraducao.Models.Entidades;
 
 namespace etraducao.Areas.Identity.Pages.Account
 {
@@ -102,6 +103,13 @@ namespace etraducao.Areas.Identity.Pages.Account
                         cliente.RegistrarCliente(Input.Nome, Input.Codigo);
                         await cobrancaRepositorio.CriarCliente(cliente);
                         await clienteRepositorio.Atualizar(cliente);
+                    }
+                    else
+                    {
+                        cliente = new Cliente(Input.Email);
+                        cliente.RegistrarCliente(Input.Nome, Input.Codigo);
+                        await cobrancaRepositorio.CriarCliente(cliente);
+                        await clienteRepositorio.Adicionar(cliente);
                     }
 
                     await _signInManager.SignInAsync(user, isPersistent: false);

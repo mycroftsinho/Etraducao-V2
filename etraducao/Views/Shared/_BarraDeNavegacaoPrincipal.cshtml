@@ -13,11 +13,22 @@
         <div class="android-header-spacer mdl-layout-spacer"></div>
 
         <!-- Navigation -->
-        <div class="android-navigation-container">
-            <nav class="android-navigation mdl-navigation">
-                <a class="mdl-navigation__link mdl-typography--text-uppercase" asp-area="Identity" asp-page="/Account/Login">Login</a>
-            </nav>
-        </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="android-navigation-container">
+                <nav class="android-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" asp-action="Painel" asp-controller="Home">Meu Painel</a>
+                </nav>
+            </div>
+        }
+        else
+        {
+            <div class="android-navigation-container">
+                <nav class="android-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </nav>
+            </div>
+        }
 
         <a asp-action="Index" asp-controller="Home">
             <span class="android-mobile-title mdl-layout-title">

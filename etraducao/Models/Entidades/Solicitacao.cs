@@ -10,6 +10,7 @@ namespace etraducao.Models.Entidades
         {
             Documentos = new List<Documento>();
             DataDaEntrega = DateTime.Now.AddDays(7);
+            DataDaSolicitacao = DateTime.Now;
         }
 
         public Solicitacao(TiposDeSolicitacao tipoDeSolicitacao, DateTime dataDaEntrega, string idiomaDestino, string idiomaOrigem, bool apostilaDeHaia)
@@ -21,6 +22,7 @@ namespace etraducao.Models.Entidades
             IdiomaDestino = idiomaDestino;
             TipoDeSolicitacao = tipoDeSolicitacao;
             ApostilaDeHaia = apostilaDeHaia;
+            DataDaSolicitacao = DateTime.Now;
 
             Pagamento = new Pagamento(this);
         }
@@ -44,6 +46,8 @@ namespace etraducao.Models.Entidades
         public decimal ValorDaApostilaDeHaia { get; private set; }
 
         public DateTime DataDaEntrega { get; private set; }
+
+        public DateTime DataDaSolicitacao { get; private set; }
 
         public decimal QuantidadeDeLaudas { get; private set; }
 
